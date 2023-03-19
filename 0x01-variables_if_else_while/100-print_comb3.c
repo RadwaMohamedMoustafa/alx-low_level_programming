@@ -16,14 +16,16 @@ int main(void)
 	{
 		for (m = n + 1; m < 10; m++)
 		{
-			putchar((n % 10) + '0');
-			putchar((m % 10) + '0');
-
-			if (n == 8 && m == 9)
-
-				continue;
+			if (n < m && n != m)
+			{
+			putchar(n + '0');
+			putchar(m + '0');
+			}
+			if (n + m != 17)
+			{
 			putchar(',');
 			putchar(' ');
+			}
 		}
 	}
 putchar('\n');
