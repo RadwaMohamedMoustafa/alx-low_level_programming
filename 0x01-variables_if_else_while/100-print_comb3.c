@@ -1,8 +1,11 @@
 #include <stdio.h>
 
 /**
- * this program should combine every 2 numbers
- * the function should return 0.
+ * main - Entry point
+ *
+ * Description: Print all possible different combinations of two digits
+ *
+ * Return: Always 0
  */
 
 int main(void)
