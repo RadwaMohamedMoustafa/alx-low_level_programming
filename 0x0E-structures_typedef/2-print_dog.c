@@ -9,8 +9,11 @@
 void print_dog(struct dog *d)
 {
 	if (d == 0)
-	d = malloc(sizeof(struct dog));
-	if (d->name == 0)
+	{
+	return;
+	}
+
+	else if (d->name == 0)
 	{
 	printf("Name: (nil)");
 	}
