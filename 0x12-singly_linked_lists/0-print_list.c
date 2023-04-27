@@ -7,11 +7,11 @@
  * @h: Pointer to the head of the list
  * Return: The number of nodes
  */
-
 size_t print_list(const list_t *h)
 {
 	int t = 1;
 	list_t *ptr;
+
 	if (h->str == NULL)
 	{
 	printf("[0] (nil)");
