@@ -10,17 +10,10 @@ void free_listint(listint_t *head)
 {
 	listint_t *ptr;
 
-	if (!head)
-	{
-	return;
-	}
-	else
-	{
 	while (head)
 	{
 	ptr = head->next;
-	free (head);
+	free(head);
 	head = ptr;
-	}
 	}
 }
