@@ -13,10 +13,11 @@
 
 void read_write_value(char *str1, char *str2, int fd1, int fd2)
 {
-	int rd, wr;
+	int rd;
 	char buff[1024];
 
-	rd = read(fd1, buff, 1024);
+	while ((rd = read(fd1, buff, 1024)))
+	{
 	if (rd == -1)
 	{
 	dprintf(STDERR_FILENO, "%s %s\n", "Error: Can't read from file", str1);
@@ -24,10 +25,7 @@ void read_write_value(char *str1, char *str2, int fd1, int fd2)
 	close(fd2);
 	exit(98);
 	}
-	if (rd == 0)
-	{
-	wr = write(fd2, buff, rd);
-	if (wr == -1)
+	if (rd != write(fd2, buff, rd))
 	{
 	dprintf(STDERR_FILENO, "%s %s\n", "Error: Can't write to", str2);
 	close(fd1);
@@ -61,7 +59,7 @@ int main(int ac, char **av)
 	dprintf(STDERR_FILENO, "%s %s\n", "Error: Can't read from file", av[1]);
 	exit(98);
 	}
-	fd2 = open(av[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
+	fd2 = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 
 	if (fd2 == -1)
 	{
