@@ -19,9 +19,7 @@ void read_write_value(char *str1, char *str2, int fd1, int fd2)
 	rd = read(fd1, buff, 1024);
 	if (rd == -1)
 	{
-	dprintf(STDERR_FILENO, "%s %s\n", "Error: Can't read from file", str1);
-	close(fd1);
-	close(fd2);
+	dprintf(STDERR_FILENO, "%s %s\n", "Error: Can't read from file", str1)
 	exit(98);
 	}
 	if (rd == 1024)
@@ -30,8 +28,6 @@ void read_write_value(char *str1, char *str2, int fd1, int fd2)
 	if (wr == -1)
 	{
 	dprintf(STDERR_FILENO, "%s %s\n", "Error: Can't write to", str2);
-	close(fd1);
-	close(fd2);
 	exit(99);
 	}
 	}
