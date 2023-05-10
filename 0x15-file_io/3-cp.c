@@ -88,7 +88,7 @@ int main(int ac, char **av)
 	}
 	exit(99);
 	}
-	read_write_value(av[2], av[1], fd1, fd2);
+	read_write_value(av[1], av[2], fd1, fd2);
 	if (close(fd1) == -1)
 	{
 	dprintf(STDERR_FILENO, "%s %d\n", "Error: Can't close fd", fd1);
