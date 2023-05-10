@@ -69,21 +69,17 @@ int main(int ac, char **av)
 	dprintf(STDERR_FILENO, "%s %s", "Error: Can't write to \n", av[2]);
 	exit(99);
 	}
-
 	read_write_value(av[2], av[1], fd1, fd2);
-
 	if (close(fd1) == -1)
 	{
 	dprintf(STDERR_FILENO, "%s %d", "Error: Can't close fd \n", fd1);
 	exit(100);
 	}
-
 	if (close(fd2) == -1)
 	{
 	dprintf(STDERR_FILENO, "%s %d", "Error: Can't close fd \n", fd2);
 	exit(100);
 	}
-
 	close(fd1);
 	close(fd2);
 	return (0);
