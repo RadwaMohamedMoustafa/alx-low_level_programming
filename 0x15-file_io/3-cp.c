@@ -13,7 +13,7 @@
 
 void read_write_value(char *str1, char *str2, int fd1, int fd2)
 {
-	int rd;
+	int rd, wr;
 	char buff[1024];
 
 	while ((rd = read(fd1, buff, 1024)))
@@ -25,7 +25,8 @@ void read_write_value(char *str1, char *str2, int fd1, int fd2)
 	close(fd2);
 	exit(98);
 	}
-	if (rd != write(fd2, buff, rd))
+	wr = write(fd2, buff, rd);
+	if (rd != wr && rd > 0)
 	{
 	dprintf(STDERR_FILENO, "%s %s\n", "Error: Can't write to", str2);
 	close(fd1);
