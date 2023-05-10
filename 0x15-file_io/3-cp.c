@@ -24,8 +24,8 @@ void read_write_value(char *str1, char *str2, int fd1, int fd2)
 	if (close(fd1) == -1)
 	{
 	dprintf(STDERR_FILENO, "%s %d\n", "Error: Can't close fd", fd1);
- 	exit(100);
-	}	
+	exit(100);
+	}
 	if (close(fd2) == -1)
 	{
 	dprintf(STDERR_FILENO, "%s %d\n", "Error: Can't close fd", fd2);
@@ -41,7 +41,7 @@ void read_write_value(char *str1, char *str2, int fd1, int fd2)
 	{
 	dprintf(STDERR_FILENO, "%s %d\n", "Error: Can't close fd", fd1);
 	exit(100);
-	}	
+	}
 	if (close(fd2) == -1)
 	{
 	dprintf(STDERR_FILENO, "%s %d\n", "Error: Can't close fd", fd2);
