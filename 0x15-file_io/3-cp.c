@@ -49,7 +49,6 @@ int main(int ac, char **av)
 {
 	int fd1, fd2;
 
-	ac = 3;
 	if (ac != 3)
 	{
 	dprintf(STDERR_FILENO, "%s", "Usage: cp file_from file_to \n");
