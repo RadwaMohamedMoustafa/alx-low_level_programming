@@ -17,7 +17,7 @@ void read_write_value(char *str1, char *str2, int fd1, int fd2)
 	char buff[1024];
 
 	rd = read(fd1, buff, 1024);
-	if (rd)
+	if (rd == 0)
 	{
 	if (rd == -1)
 	{
