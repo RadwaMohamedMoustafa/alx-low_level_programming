@@ -17,8 +17,6 @@ void read_write_value(char *str1, char *str2, int fd1, int fd2)
 	char buff[1024];
 
 	rd = read(fd1, buff, 1024);
-	if (rd == 0)
-	{
 	if (rd == -1)
 	{
 	dprintf(STDERR_FILENO, "%s %s\n", "Error: Can't read from file", str1);
@@ -26,6 +24,8 @@ void read_write_value(char *str1, char *str2, int fd1, int fd2)
 	close(fd2);
 	exit(98);
 	}
+	if (rd == 0)
+        {
 	wr = write(fd2, buff, rd);
 	if (wr == -1)
 	{
