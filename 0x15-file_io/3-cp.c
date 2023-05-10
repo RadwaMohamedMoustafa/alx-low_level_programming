@@ -21,16 +21,32 @@ void read_write_value(char *str1, char *str2, int fd1, int fd2)
 	if (rd == -1)
 	{
 	dprintf(STDERR_FILENO, "%s %s\n", "Error: Can't read from file", str1);
-	close(fd1);
-	close(fd2);
+	if (close(fd1) == -1)
+	{
+	dprintf(STDERR_FILENO, "%s %d\n", "Error: Can't close fd", fd1);
+ 	exit(100);
+	}	
+	if (close(fd2) == -1)
+	{
+	dprintf(STDERR_FILENO, "%s %d\n", "Error: Can't close fd", fd2);
+	exit(100);
+	}
 	exit(98);
 	}
 	wr = write(fd2, buff, rd);
-	if (rd != wr && rd > 0)
+	if (rd != wr && wr == -1)
 	{
 	dprintf(STDERR_FILENO, "%s %s\n", "Error: Can't write to", str2);
-	close(fd1);
-	close(fd2);
+	if (close(fd1) == -1)
+	{
+	dprintf(STDERR_FILENO, "%s %d\n", "Error: Can't close fd", fd1);
+	exit(100);
+	}	
+	if (close(fd2) == -1)
+	{
+	dprintf(STDERR_FILENO, "%s %d\n", "Error: Can't close fd", fd2);
+	exit(100);
+	}
 	exit(99);
 	}
 	}
@@ -65,6 +81,11 @@ int main(int ac, char **av)
 	if (fd2 == -1)
 	{
 	dprintf(STDERR_FILENO, "%s %s\n", "Error: Can't write to", av[2]);
+	if (close(fd1) == -1)
+	{
+	dprintf(STDERR_FILENO, "%s %d\n", "Error: Can't close fd", fd1);
+	exit(100);
+	}
 	exit(99);
 	}
 	read_write_value(av[2], av[1], fd1, fd2);
@@ -78,7 +99,5 @@ int main(int ac, char **av)
 	dprintf(STDERR_FILENO, "%s %d\n", "Error: Can't close fd", fd2);
 	exit(100);
 	}
-	close(fd1);
-	close(fd2);
 	return (0);
 }
