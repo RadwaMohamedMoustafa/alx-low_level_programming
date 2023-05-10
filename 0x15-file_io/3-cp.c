@@ -25,6 +25,7 @@ void read_write_value(char *str1, char *str2, int fd1, int fd2)
 	exit(98);
 	}
 	if (rd == 0)
+	{
 	wr = write(fd2, buff, rd);
 	if (wr == -1)
 	{
